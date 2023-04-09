@@ -1,0 +1,15 @@
+{
+  "name": "seccioncuatro-basesnode",
+  "version": "0.0.1",
+  "description": "Es una simple tabla de multiplicar con generacion de txt",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "Bryan Anariba",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^17.7.1"
+  }
+}
