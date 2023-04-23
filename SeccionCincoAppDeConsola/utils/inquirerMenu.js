@@ -31,8 +31,25 @@ const inquirerPausaMenu = async () => {
     console.log('\n');
     await inquirer.prompt([{ type: 'input', name: 'opcion', message: `Presione ${ 'ENTER'.green } Para Continuar` }]);
 }
+const leerInput = async ( mensaje ) => {
+    const { desc } = await inquirer.prompt([
+        {
+            type: 'input',
+            name: 'desc',
+            message: `${ mensaje }`,
+            validate( value ) {
+                if ( value.length === 0 ) {
+                    return 'La descripcion de la tarea es obligatoria'
+                }
+                return true;
+            }
+        }
+    ]);
+    return desc;
+}
 
 export {
     inquirerMenu,
-    inquirerPausaMenu
+    inquirerPausaMenu,
+    leerInput
 }

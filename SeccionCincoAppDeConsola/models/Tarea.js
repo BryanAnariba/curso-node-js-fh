@@ -9,9 +9,8 @@ class Tarea {
     constructor ( desc ) {
         this.id = uuidv4();
         this.desc = desc;
-        this.completadoEn = new Date();
+        this.completadoEn = null;//new Date();
     }
-
 }
 
 export {
