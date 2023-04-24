@@ -41,10 +41,30 @@ class Tareas {
     estilizadoDeTarea () {
         // 1. Recolectar las piedras del infinito :: Completada | Pendiente
         this.tareasComoColeccion.forEach((tarea, index) => {
-            console.log( `${ `${ index + 1 }`.green }. ${ tarea.desc } :: ${ ( tarea.completadoEn ) ? 'Completado'.green : 'Pendiente'.red }` );
+            console.log( `${ `${ index + 1 }.`.green } ${ tarea.desc } :: ${ ( tarea.completadoEn !== null ) ? tarea.completadoEn.green : 'Pendiente'.red }` );
         });
     }
 
+    listarTareasPoC ( isCompletadas = true ) {
+        let tareasCompletadas = [];
+        if ( isCompletadas ) {
+            tareasCompletadas = this.tareasComoColeccion.filter( tarea => tarea.completadoEn != null );
+            tareasCompletadas.forEach((tarea, index) => {
+                console.log( `${ `${ index + 1 }.`.green } ${ tarea.desc } :: ${ tarea.completadoEn.green }` );
+            });
+        } else {
+            tareasCompletadas = this.tareasComoColeccion.filter( tarea => tarea.completadoEn === null );
+            tareasCompletadas.forEach((tarea, index) => {
+                console.log( `${ `${ index + 1 }.`.green } ${ tarea.desc } :: ${ 'Pendiente'.red }` );
+            });
+        }
+    }
+
+    borrarTarea( id = '' ) {
+        if ( this._listadoTareas[id] ) {
+            delete this._listadoTareas[id];
+        }
+    }
 }
 
 export { 

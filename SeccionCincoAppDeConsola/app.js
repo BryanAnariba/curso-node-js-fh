@@ -1,5 +1,5 @@
 import 'colors';
-import { inquirerMenu, inquirerPausaMenu, leerInput } from './utils/inquirerMenu.js';
+import { confirmar, inquirerMenu, inquirerPausaMenu, leerInput, listadoTareasABorrar } from './utils/inquirerMenu.js';
 import { Tareas } from './models/Tareas.js';
 import { guardar, obtenerRegistros } from './utils/guardar.js';
 
@@ -28,6 +28,21 @@ const main = async () => {
             break;
             case '2':
                 tareas.estilizadoDeTarea();
+            break;
+            case '3':
+                tareas.listarTareasPoC( true );
+            break;
+            case '4':
+                tareas.listarTareasPoC( false );
+            break;
+            case '6':
+                const id = await listadoTareasABorrar( tareas.tareasComoColeccion );
+                if ( id !== '0' ) {
+                    const ok = await confirmar('Esta Seguro de Eliminar este Registro');
+                    if ( ok ) {
+                        tareas.borrarTarea( id );
+                    }
+                }
             break;
         }
         
