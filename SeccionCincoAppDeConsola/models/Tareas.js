@@ -65,6 +65,24 @@ class Tareas {
             delete this._listadoTareas[id];
         }
     }
+
+    cambiaEstadoTareas ( ids = [] ) {
+
+        //  PRIMERO LAS QUE VENGAN EN EL ARREGLO ids ESAS SE COMPLETARAS
+        ids.forEach(id => {
+            const tarea = this._listadoTareas[ id ]; // buscamos la tarea
+            if ( tarea.completadoEn === null ) { // si no esta completada completarla
+                tarea.completadoEn = new Date().toISOString();
+            }
+        });
+
+        // DESPUES TODAS LAS QUE NO VENGAN EN EL ARREGLO ESAS SE PONDRAN PENDIENTE
+        this.tareasComoColeccion.forEach( tarea => {
+            if ( !ids.includes( tarea.id ) ) {
+                this._listadoTareas[tarea.id].completadoEn = null;
+            }
+        })
+    }
 }
 
 export { 

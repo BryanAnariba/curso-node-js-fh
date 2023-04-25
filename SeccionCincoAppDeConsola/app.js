@@ -1,5 +1,5 @@
 import 'colors';
-import { confirmar, inquirerMenu, inquirerPausaMenu, leerInput, listadoTareasABorrar } from './utils/inquirerMenu.js';
+import { confirmar, inquirerMenu, inquirerPausaMenu, leerInput, listadoTareasABorrar, seleccionarYCompletar } from './utils/inquirerMenu.js';
 import { Tareas } from './models/Tareas.js';
 import { guardar, obtenerRegistros } from './utils/guardar.js';
 
@@ -15,6 +15,8 @@ const main = async () => {
         tareas.cargarColeccionTareasAObjeto( tareasRegistradasEnDB );
     }
     //await inquirerPausaMenu();
+
+    //@Unah
     console.clear();
     do {    
         opcionSeleccioanda = await inquirerMenu();
@@ -34,6 +36,11 @@ const main = async () => {
             break;
             case '4':
                 tareas.listarTareasPoC( false );
+            break;
+            case '5':
+                const idTareasParaCompletar = await seleccionarYCompletar( tareas.tareasComoColeccion );
+                //console.log({idTareasParaCompletar});
+                tareas.cambiaEstadoTareas( idTareasParaCompletar );
             break;
             case '6':
                 const id = await listadoTareasABorrar( tareas.tareasComoColeccion );
