@@ -5,7 +5,7 @@ const handleHttpError = ( res = response, statusCode, error, errorMessage ) => {
         statusCode: statusCode, 
         data: { 
             error: error, 
-            errorMessage: errorMessage 
+            errorMessage: errorMessage
         } 
     });
 }

@@ -39,4 +39,10 @@ const userEntity = new Schema(
     }
 );
 
+userEntity.methods.toJSON = function () {
+    const { userPassword, ...user } = this.toObject();
+    return user;
+
+}
+
 module.exports = model( 'User', userEntity );
