@@ -25,7 +25,7 @@ const getTotalUsers = async () => {
 }
 
 const deleteUser = async ( userId ) => {
-    return await UserModel.findOneAndUpdate({ _id: userId }, { userStatus: false }, { new: true });
+    return await UserModel.findByIdAndUpdate({ _id: userId }, { userStatus: false }, { new: true });
 }
 
 module.exports = {

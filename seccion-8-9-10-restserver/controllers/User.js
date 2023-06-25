@@ -1,16 +1,19 @@
 const { request, response } = require("express");
 const { handleHttpError } = require("../utils/handleHttp");
-const { createUser, updateUserData, getTotalUsers, deleteUser } = require("../services/users.service");
-const { encryptPwd } = require("../utils/bcryptHandle");
+const { createUser, updateUserData, getTotalUsers, deleteUser, findUserByEmail } = require("../services/users.service");
+const { encryptPwd, decryptPwd } = require("../utils/bcryptHandle");
 const { getAllUsers } = require("../services/users.service");
+const { createToken } = require("../utils/jwtHandle");
 
 let statusCode = 0;
 
 const findItems = async ( req = request, res = response ) => {
     try {
         const { skip = 0, limit = 10 } = req.query;
+
         // const dataBaseResponse = await getAllUsers( limit, skip );
         // const totalRecords = await getTotalUsers();
+
         const [ totalRecords, dataBaseResponse ] = await Promise.all(
             [
                 getTotalUsers(),
@@ -28,8 +31,31 @@ const findItems = async ( req = request, res = response ) => {
 
 const findItem = async ( req = request, res = response ) => {
     try {
-        const { userId} = req.params;
-        return res.status( 200 ).json({ statusCode: 200, data: `@Get-User Works -> ${ userId }` });
+        const { userEmail, userPassword } = req.body;
+        const existsUser = await findUserByEmail( userEmail );
+
+        // TODO: verificamos existencia de usuario
+        if ( !existsUser ) {
+            statusCode = 400;
+            throw new Error( `The user ${ userEmail } does not exits` );
+        }
+
+        // TODO: verificar usuario activo
+        if ( !existsUser.userStatus ) {
+            statusCode = 400;
+            throw new Error( `The user ${ userEmail } does not active` );
+        }
+
+        // TODO: verificamos clave
+        const isMatchPwd = decryptPwd( userPassword, existsUser.userPassword );
+        if ( !isMatchPwd ) {
+            statusCode = 400;
+            throw new Error( `Invalid Password` );
+        }
+
+        // TODO: generamos JWT
+        const token = await createToken( existsUser._id );
+        return res.status( 200 ).json({ statusCode: 200, data: { token, existsUser } });
     } catch ( error ) {
         statusCode = statusCode !== 0 ? statusCode : 500
         return handleHttpError( res, statusCode, 'HTTP_FIND_ITEMS', error.message );

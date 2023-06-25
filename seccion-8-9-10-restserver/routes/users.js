@@ -1,8 +1,9 @@
 const { Router } = require( 'express' );
-const { findItems, findItem, createItem, updateItem, deleteItem } = require('../controllers/User');
 const { check } = require('express-validator');
-const { validator } = require('../middlewares/validators');
+
+const { findItems, findItem, createItem, updateItem, deleteItem } = require('../controllers/User');
 const { verifyRole, verifyEmail, verifyUserById } = require('../utils/validatorsHandle');
+const { validator, verifyAuthenticationAccess, isAdminRole, isInRole } = require( '../middlewares' );
 
 const router = Router();
 
@@ -36,9 +37,16 @@ router.put(
     updateItem 
 );
 
+/*
+    ---Private Route---> SOLO ADMIN LOGUEADOS PUEDEN REALIZAR EL BORRADO LOGICO
+    [DELETE] 
+*/
 router.delete( 
     '/:userId', 
     [
+        verifyAuthenticationAccess,
+        //isAdminRole, un solo rol que es admin
+        isInRole( 'ADMIN', 'SALES' ),
         check( 'userId' ).custom( ( userId ) => verifyUserById( userId ) ),
         validator,
     ],

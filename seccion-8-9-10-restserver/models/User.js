@@ -40,8 +40,11 @@ const userEntity = new Schema(
 );
 
 userEntity.methods.toJSON = function () {
-    const { userPassword, ...user } = this.toObject();
-    return user;
+    const { userPassword, _id, ...user } = this.toObject();
+    return {
+        uid: _id,
+        ...user
+    };
 
 }
 

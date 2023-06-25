@@ -1,5 +1,5 @@
 const { findUserByEmail, findUserById } = require("../services/users.service");
-const { RoleModel, UserModel } = require('../models'); // ABCsUMn8oOcyIbx7
+const { RoleModel } = require('../models'); // ABCsUMn8oOcyIbx7
 
 const verifyRole = async ( userRole = '' ) => {
     const isRoleInDB = await RoleModel.findOne({ roleName: userRole });
