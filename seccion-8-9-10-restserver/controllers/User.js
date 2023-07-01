@@ -4,6 +4,7 @@ const { createUser, updateUserData, getTotalUsers, deleteUser, findUserByEmail }
 const { encryptPwd, decryptPwd } = require("../utils/bcryptHandle");
 const { getAllUsers } = require("../services/users.service");
 const { createToken } = require("../utils/jwtHandle");
+const { googleVerify } = require("../utils/google.verify");
 
 let statusCode = 0;
 
@@ -111,10 +112,53 @@ const deleteItem = async ( req = request, res = response ) => {
     }
 }
 
+const googleSignIn = async ( req = request, res = response ) =>{
+    const { tokenId } = req.body;
+    try {
+        // Obtenemos la informacion de google para verificar y guardar
+        const { userName, userImg, userEmail } = await googleVerify(tokenId);
+
+        // Buscamos ese email encontrado en google en nuestra base de datos 
+        let user = await findUserByEmail( userEmail );
+
+        // Si no existe guardar
+        if ( !user ) {
+            // Tengo que crearlo
+            const data = {
+                userName: userName, 
+                userImg: userImg, 
+                userEmail: userEmail, 
+                userPassword: ':P',
+                userRole: 'USER',
+                isUserGoogleSigned: true
+            };
+            const dataBaseResponse = await createUser(data);
+            statusCode = 201
+            return res.status( statusCode ).json({ statusCode: statusCode, data: dataBaseResponse });
+        }
+
+        // Si el usuario existe en nuestra base de datos, y no esta activo
+        if ( !user.userStatus ) {
+            statusCode = 401
+            throw new Error(`The user ${ userEmail } already exists with inactive status, call with the admininstrator`)
+        }
+
+        //console.log(googleUser)
+        // Si paso las validaciones generar JWT
+        const token = await createToken( user._id );
+        return res.status( 200 ).json({ statusCode: 200, data: { token, user } });
+    } catch ( error ) {
+        statusCode = statusCode !== 0 ? statusCode : 500
+        return handleHttpError( res, statusCode, 'HTTP_GOOGLE_SIGN_IN_ERROR', error.message );
+    }
+}
+
+
 module.exports = {
     findItems,
     findItem,
     createItem,
     updateItem,
     deleteItem,
+    googleSignIn,
 }

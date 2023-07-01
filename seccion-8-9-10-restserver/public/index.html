@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso Denegado</title>
+    <title>Google Sign In</title>
 </head>
+
 <body>
-    <h1 style="color: red;">Unauthorized Request</h1>
+    <h1>Google Sign In</h1>
+    <hr>
+    <div id="g_id_onload" data-client_id="331512945219-osuqo2elckagn3pe8aga99emsi2oqaal.apps.googleusercontent.com"
+        data-login_uri="https://your.domain/your_login_endpoint" data-auto_prompt="false"
+        data-callback="handleCredentialResponse">
+    </div>
+    <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with"
+        data-shape="rectangular" data-logo_alignment="left">
+    </div>
+
+    <button id="google-sign-out">
+        Sign Out
+    </button>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        function handleCredentialResponse(response) {
+            
+            /*
+                const responsePayload = decodeJwtResponse(response.credential);
+                console.log('Google Token o ID_TOKEN: ',   response.credential);
+            */
+            const body = { tokenId: response.credential };
+            fetch( `http://localhost:3500/api/auth/google`, { 
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json' 
+                },
+                body: JSON.stringify(body)
+            })
+                .then( res => res.json() )
+                .then( res => {
+                    console.log(res)  
+                    localStorage.setItem('userEmail', res.data.user.userEmail);
+                })
+                .catch( error => console.warn(error) );
+            
+        }
+
+        const button = document.querySelector('#google-sign-out');
+        button.onclick = () => {
+            google.accounts.id.revoke( localStorage.getItem('userEmail'), done => {
+                localStorage.clear();
+                location.reload();
+            })
+        }
+    </script>
 </body>
+
 </html>
