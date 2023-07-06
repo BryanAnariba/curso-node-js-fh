@@ -1,5 +1,8 @@
 const { findUserByEmail, findUserById } = require("../services/users.service");
 const { RoleModel } = require('../models'); // ABCsUMn8oOcyIbx7
+const { findCategoryById } = require("../services/categories.service");
+
+// Users Validations
 
 const verifyRole = async ( userRole = '' ) => {
     const isRoleInDB = await RoleModel.findOne({ roleName: userRole });
@@ -24,8 +27,18 @@ const verifyUserById = async ( userId ) => {
     }
 }
 
+// Categories Validations
+const verifyCategory = async ( categoryId ) => {
+    const existsCategory = await findCategoryById( categoryId );
+    if ( !existsCategory ) {
+        statusCode = 400;
+        throw new Error( `The category does not exists` );
+    }
+}
+
 module.exports = {
     verifyRole,
     verifyEmail,
     verifyUserById,
+    verifyCategory,
 }

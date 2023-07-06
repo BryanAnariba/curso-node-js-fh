@@ -7,9 +7,30 @@ const { validator, verifyAuthenticationAccess, isAdminRole, isInRole } = require
 
 const router = Router();
 
-router.get( '', findItems );
+router.get( 
+    '', 
+    findItems 
+);
 
-router.get( '/:userId', findItem );
+router.get( 
+    '/:userId', 
+    findItem 
+);
+
+/*
+    PLUS: PENSAR EN LA POSIBILIDAD DE UN REFRESH TOKEN DEACUERDO A LA EXCEPCION LANZADA POR EL MIDDLEWARE DE VERIFICACION DE ACCESO => TokenExpiredError
+    {
+        "statusCode": 401,
+        "data": {
+            "error": "HTTP_ACCESS_ERROR",
+            "errorMessage": {
+                "name": "TokenExpiredError",
+                "message": "jwt expired",
+                "expiredAt": "2023-07-04T14:34:50.000Z"
+            }
+    }
+}
+*/
 
 router.post( 
     '', 

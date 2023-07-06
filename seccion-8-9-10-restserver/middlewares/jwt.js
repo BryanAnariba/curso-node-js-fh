@@ -3,7 +3,7 @@ const jwt = require( 'jsonwebtoken' );
 
 const { UserModel } = require('../models/index');
 const { handleHttpError } = require('../utils/handleHttp');
-const { findUserById } = require('../services/users.service');
+//const { findUserById } = require('../services/users.service');
 
 const verifyAuthenticationAccess = async ( req = request, res = response, next ) => {
     const token = req.header('x-access-token'); // Bearer tokenasdasdasdsad => tokenasdasdasdsad

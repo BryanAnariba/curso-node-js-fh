@@ -4,19 +4,24 @@ const { check } = require( 'express-validator' );
 
 const { verifyAuthenticationAccess } = require('../middlewares/jwt');
 const { validator } = require('../middlewares/validators');
-const { createItem } = require('../controllers/Category');
+const { createItem, getItems, getItem, updateItem, deleteItem } = require('../controllers/Category');
+const { verifyCategory } = require('../utils/validatorsHandle');
+const { isAdminRole } = require('../middlewares');
 
 const router = Router();
 
 // TODO: obtener todas las categorias - publico
-router.get( '', (req, res) => {
-    return res.status(200).json({ statusCode: 200, data: 'Get-Categories Works' });
-});
+router.get( '', getItems );
 
 // TODO: obtener categoria por id - publico
-router.get( '/:categoryId', (req, res) => {
-    return res.status(200).json({ statusCode: 200, data: 'Get-One-Categories Works' });
-});
+router.get( 
+    '/:categoryId', 
+    [
+        check( 'categoryId' ).custom( categoryId => verifyCategory( categoryId ) ),
+        validator
+    ],
+    getItem
+);
 
 // TODO: crear categoria - private - cualquier persona con token valido
 router.post( 
@@ -30,15 +35,26 @@ router.post(
 );
 
 // TODO: actualizar categoria - private - cualquier persona con token valido
-router.put( '/:categoryId', (req, res) => {
-    return res.status(200).json({ statusCode: 200, data: 'Put-Categories Works' });
-});
+router.put( 
+    '/:categoryId',
+    [
+        verifyAuthenticationAccess,
+        check( 'categoryId' ).custom( categoryId => verifyCategory( categoryId ) ),
+        validator
+    ],
+    updateItem
+);
 
 // TODO: borrar categoria por id - solo Admins
-router.delete( '/:categoryId', (req, res) => {
-    return res.status(200).json({ statusCode: 200, data: 'Delete-One-Categories Works' });
-});
-
-
+router.delete( 
+    '/:categoryId', 
+    [
+        verifyAuthenticationAccess,
+        isAdminRole,
+        check( 'categoryId' ).custom( categoryId => verifyCategory( categoryId ) ),
+        validator
+    ],
+    deleteItem
+);
 
 module.exports = router;
