@@ -1,4 +1,7 @@
 const { Router } = require('express');
+const { verifyAuthenticationAccess, validator } = require('../middlewares');
+const { check } = require('express-validator');
+const { createItem } = require('../controllers/Products');
 
 const router = Router();
 
@@ -10,6 +13,15 @@ router.get('', (req, res) => {
 // TODO: obtener producto por id - publico
 
 // TODO: crear producto - private - cualquier persona con token valido
+router.post(
+    '',
+    [
+        verifyAuthenticationAccess,
+        check('productName','Product Name is required').not().isEmpty(),
+        validator,
+    ],
+    createItem,
+);
 
 // TODO: actualizar producto - private - cualquier persona con token valido
 
