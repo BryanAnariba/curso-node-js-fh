@@ -22,7 +22,7 @@ const productEntity = new Schema(
         },
         category: {
             type: Schema.Types.ObjectId,
-            red: 'Category',
+            ref: 'Category',
             required: [ true, 'Category is required' ]
         },
         productDescription: {

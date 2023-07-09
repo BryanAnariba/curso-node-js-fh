@@ -1,0 +1,348 @@
+{
+	"info": {
+		"_postman_id": "70c2d0f0-cf4f-4efe-afb0-004bb588117e",
+		"name": "Coffee App",
+		"description": "Consumo de Servicios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "10109923"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get Categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDZhNTc2NjYyYWMyOWZkNGUwNzQ3NjUiLCJpYXQiOjE2ODg0Nzc2OTAsImV4cCI6MTY4ODQ4MTI5MH0.osyN4ZqHqixaYmiFj13_rfu665MxRqiJTf4FmOQklBY",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": "localhost:3500/api/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3500/api/categories/64a42377e163d09a28e15e6a"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDZhNTc2NjYyYWMyOWZkNGUwNzQ3NjUiLCJpYXQiOjE2ODg0Nzc2OTAsImV4cCI6MTY4ODQ4MTI5MH0.osyN4ZqHqixaYmiFj13_rfu665MxRqiJTf4FmOQklBY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Games\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3500/api/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDZhNTc2NjYyYWMyOWZkNGUwNzQ3NjUiLCJpYXQiOjE2ODg0Nzc2OTAsImV4cCI6MTY4ODQ4MTI5MH0.osyN4ZqHqixaYmiFj13_rfu665MxRqiJTf4FmOQklBY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"SWEET DRINKS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3500/api/categories/64a39849a54d1910eafe5e48"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDZhNTc2NjYyYWMyOWZkNGUwNzQ3NjUiLCJpYXQiOjE2ODg0Nzc2OTAsImV4cCI6MTY4ODQ4MTI5MH0.osyN4ZqHqixaYmiFj13_rfu665MxRqiJTf4FmOQklBY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3500/api/categories/64a39849a54d1910eafe5e48",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"api",
+								"categories",
+								"64a39849a54d1910eafe5e48"
+							],
+							"query": [
+								{
+									"key": "x-access-token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDZhNTc2NjYyYWMyOWZkNGUwNzQ3NjUiLCJpYXQiOjE2ODg0Nzc2OTAsImV4cCI6MTY4ODQ4MTI5MH0.osyN4ZqHqixaYmiFj13_rfu665MxRqiJTf4FmOQklBY",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"Bryan Ariel Sanchez Anariba\",\r\n    \"userEmail\": \"saariel131@gmail.com\",\r\n    \"userPassword\": \"asd.456\",\r\n    \"userRole\": \"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3500/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"Bryan Ariel Sanchez Miguel\",\r\n    \"userEmail\": \"saariel116@gmail.com\",\r\n    \"userPassword\": \"asd.456\",\r\n    \"userRole\": \"SALES\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3500/api/users/646a59082b8a469a21c2e6b2"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Lista de Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3500/api/users?limit=5&skip=5",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "skip",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:3500/api/users/646a59082b8a469a21c2e6b2"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userEmail\": \"saariel115@gmail.com\",\r\n    \"userPassword\": \"asd.456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3500/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Google SignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://localhost:3500/api/auth/google"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Obtener Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3500/api/products?skip=0&limit=10",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Nuevo Producto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDZhNTc2NjYyYWMyOWZkNGUwNzQ3NjUiLCJpYXQiOjE2ODg5NDE3ODAsImV4cCI6MTY4ODk0NTM4MH0.G6a4sgwfzqjMIRdv_HUEMKJzPYFsBNjUAssrLRUKtLM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\": \"Corona\", \r\n    \"productPrice\": 1.50, \r\n    \"productDescription\": \"Fast & Furious Drink\",\r\n    \"categoryId\": \"64a4235fe163d09a28e15e5e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3500/api/products"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3500/api/products/64ab1bf3750cad1559b21cac"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Producto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDZhNTc2NjYyYWMyOWZkNGUwNzQ3NjUiLCJpYXQiOjE2ODg5NDE3ODAsImV4cCI6MTY4ODk0NTM4MH0.G6a4sgwfzqjMIRdv_HUEMKJzPYFsBNjUAssrLRUKtLM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"productName\": \"Coca Cola Zero\", \r\n    \"productPrice\": 2.00, \r\n    \"productDescription\": \"Dietetic Soda\", \r\n    \"isAvaliable\": false,\r\n    \"categoryId\": \"64a39849a54d1910eafe5e48\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3500/api/products/64ab1a25332fb48ef02b6ef2"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Producto",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDZhNTc2NjYyYWMyOWZkNGUwNzQ3NjUiLCJpYXQiOjE2ODg5NDE3ODAsImV4cCI6MTY4ODk0NTM4MH0.G6a4sgwfzqjMIRdv_HUEMKJzPYFsBNjUAssrLRUKtLM",
+								"type": "text"
+							}
+						],
+						"url": "localhost:3500/api/products/64ab361e875781c7ffcd0cba"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "Buscar en colecciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3500/api/search/product/corona"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

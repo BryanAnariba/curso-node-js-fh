@@ -8,6 +8,18 @@ const findUserByEmail = async ( userEmail ) => {
     return await UserModel.findOne({ userEmail: userEmail });
 }
 
+const findUserByNameOrEmail = async ( term ) => {
+    return await UserModel.find({ 
+        $or: [
+            {userName: term},
+            {userEmail: term},
+        ],
+        $and: [
+            { userStatus: true }
+        ]
+    });
+}
+
 const updateUserData = async ( userId, userData ) => {
     return await UserModel.findOneAndUpdate( { _id: userId }, userData, { new: true } );
 }
@@ -36,4 +48,5 @@ module.exports = {
     getAllUsers,
     getTotalUsers,
     deleteUser,
+    findUserByNameOrEmail,
 }

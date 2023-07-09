@@ -17,4 +17,4 @@ const categoryEntity = new Schema({
     }
 });
 
-module.exports = model( 'Categories', categoryEntity );
+module.exports = model( 'Category', categoryEntity );

@@ -28,6 +28,17 @@ const deleteCategory = async ( categoryId ) => {
     return await CategoryModel.findByIdAndUpdate({ _id: categoryId }, { status: false }, { new: true }).populate('user');
 }
 
+const findCategoriesByName = async ( term ) => {
+    return await CategoryModel.find({ 
+        $or: [
+            { name: term }
+        ],
+        $and: [
+            { status: true }
+        ]
+    });
+}
+
 module.exports = {
     findCategoryByName,
     createNewCategory,
@@ -36,4 +47,5 @@ module.exports = {
     findCategoryById,
     updateCategory,
     deleteCategory,
+    findCategoriesByName,
 }

@@ -1,6 +1,7 @@
 const { findUserByEmail, findUserById } = require("../services/users.service");
 const { RoleModel } = require('../models'); // ABCsUMn8oOcyIbx7
 const { findCategoryById } = require("../services/categories.service");
+const { findProductById } = require("../services/products.service");
 
 // Users Validations
 
@@ -36,9 +37,18 @@ const verifyCategory = async ( categoryId ) => {
     }
 }
 
+const verifyProduct = async (productId) => {
+    const existsProduct = await findProductById( productId );
+    if ( !existsProduct ) {
+        statusCode = 400;
+        throw new Error( `The product does not exists` );
+    }
+}
+
 module.exports = {
     verifyRole,
     verifyEmail,
     verifyUserById,
     verifyCategory,
+    verifyProduct,
 }
