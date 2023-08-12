@@ -1,0 +1,29 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  color: #333;
+  background-color: #0079BF;
+}
+
+
+.list{
+	background-color:#E2E4E6;
+	color:#333;
+}
+
+.navbar-inverse {
+    background-color: #0067A3;
+    color: #fff;
+    border-color: transparent;
+}
+
+.card{
+	background-color:#fff;
+}
+
+.blue-list{
+	background-color:#0067A3;
+	color:#333;
+	border-color: transparent;
+}

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Twitter</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <script defer src="js/fontawesome-all.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="#">Twitter</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <div id="navbar-user-section" style="display:none;">
+          <img src = "img/profile-pics/patricio.jpg" class="img-fluid rounded-circle img-thumbnail" style="width: 40px">
+          <button id="btn-logout" class="btn btn-link">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="starter-template">
+        <div class="row">
+          <div class="col-lg-4">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="component text-center" id="div-detalles-usuario" style="display:none;">
+                    <div class="component-header">
+                      <img src = "img/profile-pics/patricio.jpg" class="img-fluid rounded-circle img-thumbnail">
+                    </div>
+                    <hr>
+                    <h2 class="blue-text">Patricio Perez</h2>
+                    <small>@patricio</small>
+                    <hr>
+                    <div class="row">
+                      <div class="col-lg-4">
+                        Tweets<br>
+                        <span class="blue-text">5</span>
+                      </div>
+                      <div class="col-lg-4">
+                        Following<br>
+                        <span class="blue-text">4</span>
+                      </div>
+                      <div class="col-lg-4">
+                        Followers<br>
+                        <span class="blue-text">3</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="component text-center" id="div-login">
+                      <div class="component-header">
+                        <img src = "img/twitter.png" class="img-fluid rounded-circle img-thumbnail">
+                      </div>
+                      <hr>
+                      <h2 class="blue-text">Login</h2>
+                      <hr>
+                      <input type="text" class="form-control" placeholder="Usuario">
+                      <input type="text" class="form-control" placeholder="Contraseña">
+                      <button class="btn btn-primary" id="btn-login">Login</button>
+                    </div>
+
+                </div>
+                <div class="col-lg-12">
+                  <div class="component text-left">
+                    <h2>Trends</h2>
+                    <div><span class="blue-text">#InfinityWar</span> <small>5000 tweets</small></div>
+                    <div><span class="blue-text">#FueraJOH</span> <small>4999 tweets</small></div>
+                    <div><span class="blue-text">#ViscaMotagua</span> <small>1254 tweets</small></div>
+                    <div><span class="blue-text">#HalaOlimpia</span> <small>500 tweets</small></div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="component  text-left">
+              <textarea class="form-control" placeholder="What's happening"></textarea>
+              <input type="text" class="form-control hashtags-input" placeholder="Hashtags">
+              <button type="button" class="btn btn-primary">Tweet</button>
+            </div>
+
+            <div id="tweets" style="display:none">
+              <!--Primer Tweet-->
+              <div class="row component text-left">
+                  <div class="col-lg-2">  
+                    <img src = "img/profile-pics/goku.jpg" class="img-fluid rounded-circle img-thumbnail">
+                  </div>
+                  <div class="col-lg-10">
+                    <b>Goku</b> @goku
+                    <div class="tweet-content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        <div>
+                            <small class="blue-text">#InfinityWar</small>
+                            <small class="blue-text">#FueraJOH</small>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+
+              <!--Segundo Tweet-->
+              <div class="row component text-left">
+                  <div class="col-lg-2">  
+                    <img src = "img/profile-pics/bulma.jpg" class="img-fluid rounded-circle img-thumbnail">
+                  </div>
+                  <div class="col-lg-10">
+                    <b>Bulma</b> @bulma
+                    <div class="tweet-content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        <div>
+                            <small class="blue-text">#InfinityWar</small>
+                            <small class="blue-text">#FueraJOH</small>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+    	        <!--Tercer Tweet-->
+              <div class="row component text-left">
+                    <div class="col-lg-2">  
+                      <img src = "img/profile-pics/dende.jpg" class="img-fluid rounded-circle img-thumbnail">
+                    </div>
+                    <div class="col-lg-10">
+                      <b>Dende</b> @dende
+                      <div class="tweet-content">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                          <div>
+                              <small class="blue-text">#InfinityWar</small>
+                              <small class="blue-text">#FueraJOH</small>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+
+          
+        </div>
+      </div>
+
+    </main><!-- /.container -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/controlador.js"></script>
+  </body>
+</html>

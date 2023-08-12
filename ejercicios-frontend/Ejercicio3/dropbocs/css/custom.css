@@ -1,0 +1,24 @@
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(215, 240, 246, 0.2);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(134, 234, 244, 0.25);
+}
+
+body{
+	color: #808a93;
+}
+
+body {
+  padding-top: 5rem;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.form-control{
+	margin-top:2px;
+	margin-bottom:2px;
+}

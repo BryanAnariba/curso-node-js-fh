@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Twitter</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <script defer src="js/fontawesome-all.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="#">Twitter</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <div id="navbar-user-section" style="display:none;">
+          <img id="imgImagenUsuarioLogueado" class="img-fluid rounded-circle img-thumbnail" style="width: 40px">
+          <button id="btn-logout" class="btn btn-link">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="starter-template">
+        <div class="row">
+          <div class="col-lg-4">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="component text-center" id="div-detalles-usuario" style="display:none;">
+                    <div class="component-header">
+                      <img id="imgImagenPerfil" src = "" class="img-fluid rounded-circle img-thumbnail">
+                    </div>
+                    <hr>
+                    <h2 id="lblNombreUsuario" class="blue-text"></h2>
+                    <small id="lblAliasUsuario"></small>
+                    
+                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modal-editar-usuario">
+                      <i class="far fa-edit"></i>
+                    </button>
+                    <hr>
+                    <div class="row">
+                      <div class="col-lg-4">
+                        Tweets<br>
+                        <span id="lblCantidadTweets" class="blue-text"></span>
+                      </div>
+                      <div class="col-lg-4">
+                        Following<br>
+                        <span id="lblCantidadSiguidos" class="blue-text"></span>
+                      </div>
+                      <div class="col-lg-4">
+                        Followers<br>
+                        <span id="lblCantidadSeguidores" class="blue-text"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="component text-center" id="div-login">
+                      <div class="component-header">
+                        <img src = "img/twitter.png" class="img-fluid rounded-circle img-thumbnail">
+                      </div>
+                      <hr>
+                      <h2 class="blue-text">Login</h2>
+                      <hr>
+                      <input id="txtAliasUsuario" type="text" class="form-control" placeholder="Usuario">
+                      <input id="txtContrasenia" type="password" class="form-control" placeholder="Contraseña">
+                      <label id="lblAvisoCredencialesIncorrectas" style="display: none;" class="lbl-aviso">Usuario o contraseña son inválidos</label>
+                      <button class="btn btn-primary" id="btn-login">Login</button>
+                    </div>
+
+                </div>
+                <div class="col-lg-12">
+                  <div class="component text-left">
+                    <h2>Trends</h2>
+                    <div id="hashTagsTrends"></div>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="component text-left">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="following-tab" data-toggle="tab" href="#div-following" role="tab" aria-controls="div-following" aria-selected="true">Following</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" id="followers-tab" data-toggle="tab" href="#div-followers" role="tab" aria-controls="div-followers" aria-selected="false">Followers</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="tab-content">
+                      <div class="tab-pane fade show active" id="div-following" role="tabpanel" aria-labelledby="following-tab">
+                          <div class="row">
+                            <div class="col-lg-3 col-sm-3 col-3 col-md-3">
+                              <img src = "img/profile-pics/patricio.jpg" class="img-fluid rounded-circle img-thumbnail">
+                            </div>
+                            <div class="col-lg-9 col-sm-9 col-9 col-md-9">
+                              <b>Patricio</b>
+                              <p>Intibuca</p>
+                            </div>
+                            <div class="col-lg-3 col-sm-3 col-3 col-md-3">
+                                <img src = "img/profile-pics/trunks.jpg" class="img-fluid rounded-circle img-thumbnail">
+                              </div>
+                              <div class="col-lg-9 col-sm-9 col-9 col-md-9">
+                                <b>Trunks</b>
+                                <p>Nicaragua</p>
+                              </div>
+                          </div>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-following">Seguir a..</button>
+                      </div>
+                      <div class="tab-pane fade" id="div-followers" role="tabpanel" aria-labelledby="followers-tab">
+                          <div class="row">
+                            <div class="col-lg-3 col-sm-3 col-3 col-md-3">
+                              <img src = "img/profile-pics/bulma.jpg" class="img-fluid rounded-circle img-thumbnail">
+                            </div>
+                            <div class="col-lg-9 col-sm-9 col-9 col-md-9">
+                              <b>Bulma</b>
+                              <p>Honduras</p>
+                            </div>
+                            <div class="col-lg-3 col-sm-3 col-3 col-md-3">
+                                <img src = "img/profile-pics/dende.jpg" class="img-fluid rounded-circle img-thumbnail">
+                              </div>
+                              <div class="col-lg-9 col-sm-9 col-9 col-md-9">
+                                <b>Dende</b>
+                                <p>Nicaragua</p>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="component  text-left">
+              <textarea disabled id="txtContenidoTweet" class="form-control" placeholder="What's happening"></textarea>
+              <input disabled id="txtHashTagTweet" type="text" class="form-control hashtags-input" placeholder="Hashtags">
+              <button disabled id="btnNuevoTweet" onclick="registrarTweet()" type="button" class="btn btn-primary">Tweet</button>
+            </div>
+            <div id="tweets" style="display:none"> </div>
+          </div>
+          <input type="hidden" id="codigoUsuario">
+        </div>
+      </div>
+    </main><!-- /.container -->
+
+
+  <!-- Modal Actualizar -->
+  <div class="modal fade" id="modal-editar-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Haga aqui el formulario para actualizar los datos del usuario.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Following -->
+  <div class="modal fade" id="modal-following" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Llenar este Select List con los usuarios para agregarlos a la lista de seguidos.
+            <select class="form-control">
+              <option value="1">Goku</option>
+              <option value="2">Trunks</option>
+              <option value="3">Gohan</option>
+              <option value="4">Freezer</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/controlador.js"></script>
+  </body>
+</html>

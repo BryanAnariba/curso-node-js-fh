@@ -1,0 +1,56 @@
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(215, 240, 246, 0.2);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(134, 234, 244, 0.25);
+}
+
+body{
+  color: #808a93;
+  background-color:#E6ECF0;
+}
+
+body {
+  padding-top: 5rem;
+}
+.starter-template {
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+}
+
+.form-control{
+	margin-top:2px;
+	margin-bottom:2px;
+}
+
+.navbar-light .bg-light{
+  background-color:#fff;
+}
+
+.component{
+  background-color: #fff;
+  background-clip: inherit;
+  border: 1px solid #e6ecf0;
+  line-height: inherit;
+  padding: 15px;
+  margin:10px;
+}
+
+.blue-text{
+  color: #1DA1F2;
+  font-weight: bold;
+}
+
+.component-header{
+  background-color: #1DA1F2;
+  padding:15px;
+}
+
+.hashtags-input{
+  font-size: 0.75em;
+}
+.hashtags-input:focus{
+  color: #1DA1F2;
+  font-weight: bold;
+}
