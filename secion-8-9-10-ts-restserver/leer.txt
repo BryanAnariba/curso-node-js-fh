@@ -1,0 +1,4 @@
+Mismo backend pero con Typescript
+    tsc --init
+    npm init --yes
+    
