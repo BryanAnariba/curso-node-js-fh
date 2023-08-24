@@ -1,7 +1,9 @@
+import 'colors';
 import express, { Application, urlencoded, json  } from "express";
 import cors from 'cors';
 
 export class Server {
+
     app!: Application;
 
     constructor () {
@@ -18,7 +20,8 @@ export class Server {
 
     middlewares (): void {
         this.app.use( cors() );
-        this.app.use(  );
+        this.app.use( json() );
+        this.app.use( urlencoded({ extended: true }) );
     }
 
     routes (): void {
@@ -30,6 +33,18 @@ export class Server {
     }
 
     async startServer (): Promise<void> {
-
+        try {
+            console.clear();
+            await this.app.listen( this.app.get( 'PORT' ) );
+            console.log( `====================================`.red );
+            console.log( `Node JS Server started on port: ${ this.app.get( 'PORT' ) }`.cyan );
+            console.log( `====================================`.red );
+        } catch ( error ) {
+            throw new Error( `Error: ${ error }` );
+        } finally {
+            process.exit;
+        }
+       
     }
+    
 }
