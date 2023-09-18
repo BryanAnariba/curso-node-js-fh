@@ -1,0 +1,3 @@
+Domain: reglas de negocio
+Infrastructure: punto medio entre domain y presentation
+Presentation: modulos fastify o express codigo, da respuesta a los endpoints que creamos, es lo mas externo de la arquitectura limpia
